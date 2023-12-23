@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+#NavBar {
+  width: 62px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: solid 1px rgb(229,228,228);
+}
+#NavBar i,
+i::before {
+  color: rgb(101, 102, 106);
+  font-size: 30px;
+  padding: 8px;
+  margin-top: 10px;
+}
+#NavBar .selected::before {
+  color: black;
+  background-color: rgb(244, 244, 245);
+  border-radius: 8px;
+}
+#NavBar .profilePicture {
+    display: flex;
+    width: 65%;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
