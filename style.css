@@ -1,5 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700;200&display=swap");
+
 body {
   margin: 0;
+}
+main {
+  display: flex;
+}
+.selected {
+  color: black !important;
+  background-color: rgb(244, 244, 245);
+  border-radius: 8px;
 }
 
 #NavBar {
@@ -9,23 +19,112 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-right: solid 1px rgb(229,228,228);
+  border-right: solid 1px rgb(229, 228, 228);
 }
-#NavBar i,
-i::before {
+#NavBar .fa-solid {
   color: rgb(101, 102, 106);
+  width: 32px;
+  height: 32px;
   font-size: 30px;
   padding: 8px;
-  margin-top: 10px;
+  margin: 10px 0 0 8px;
 }
-#NavBar .selected::before {
-  color: black;
+#NavBar .fa-solid:hover {
+  background-color: rgb(244, 244, 245);
+  border-radius: 8px;
+  cursor: pointer;
+}
+#NavBar .profilePicture {
+  user-select: none;
+  display: flex;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#ChatMenu {
+  width: 360px;
+  height: 100vh;
+  border-right: solid 1px rgb(229, 228, 228);
+}
+#ChatMenu .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+#ChatMenu .title h1 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 28px;
+  margin: 0 0 0 15px;
+}
+#ChatMenu .title .fa-solid {
+  padding: 10px;
+  background-color: rgb(244, 244, 245);
+  color: rgb(4, 4, 5);
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#ChatMenu .title .fa-solid:hover {
+  background-color: rgb(232,233,233);
+}
+#searchChat {
+  background-color: rgb(244, 244, 245);
+  width: 80%;
+  height: 35px;
+  border: none;
+  border-radius: 100px;
+  margin: 0 0 0 15px;
+  padding: 0 0 0 40px;
+}
+#searchChat::placeholder {
+  font-size: 15px;
+}
+#ChatMenu .searchChat .fa-solid {
+  position: absolute;
+  top: 70px;
+  left: 92px;
+  color: rgba(194, 195, 197, 255);
+  font-size: 18px;
+}
+#ChatMenu .chatList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 88%;
+  margin: 15px 0;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+#ChatMenu .chatList .chatSelection {
+  user-select: none;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  width: 95%;
+  height: 70px;
+  cursor: pointer;
+}
+#ChatMenu .chatList .chatSelection:hover {
   background-color: rgb(244, 244, 245);
   border-radius: 8px;
 }
-#NavBar .profilePicture {
-    display: flex;
-    width: 65%;
-    margin-bottom: 10px;
-    border-radius: 50%;
+#ChatMenu .chatList .chatSelection .text h1 {
+  font-size: 15px;
+  margin: 15px 0 -10px 0
+}
+#ChatMenu .chatList .chatSelection .text p {
+  color: rgb(101,103,107);
+  font-size: 14px;
+  font-weight: 200;
+}
+#ChatMenu .chatList .chatSelection .profilePicture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
 }
