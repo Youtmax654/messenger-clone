@@ -217,7 +217,7 @@ main {
   align-items: center;
   background: rgb(240,241,241);
   height: 30px;
-  padding: 1px 15px 1px 15px;
+  padding: 2px 15px 2px 15px;
   border-radius: 50px;
   margin: 0;
 }
@@ -229,7 +229,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 30px;
-  margin: 3px 10px 3px auto;
+  margin: 1px 10px 1px auto;
   color: white;
   background: rgb(38,119,224);
   border-radius: 50px;
