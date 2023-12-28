@@ -13,17 +13,12 @@ if (isset($_SESSION["successfulConnection"])) {
 
 $pdo = connectToDbAndGetPDO();
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="assets/js/hidePopup.js"></script>
-    <title>Messenger Clone</title>
+    <?php require "utils/head.php" ?>
+    <title>Messenger</title>
 </head>
 
 <body>
@@ -39,7 +34,14 @@ $pdo = connectToDbAndGetPDO();
                 <i class="fa-solid fa-comment selected"></i>
                 <i class="fa-solid fa-address-book"></i>
             </div>
-            <img src="assets/img/profilePicture.jpg" alt="Profile picture">
+            <img src="assets/img/profilePicture.jpg" alt="Profile picture" id="Profile">
+            <div id="ProfileMenu" class="hidden">
+                <div class="button">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <a href="utils/disconnect.php">Déconnexion</a>
+                </div>
+                <div class="arrow"></div>
+            </div>
         </div>
         <div id="ChatMenu">
             <div class="title">

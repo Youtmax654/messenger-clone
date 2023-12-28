@@ -32,36 +32,33 @@ if (!empty($_POST["register"])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/account.css">
-    <script src="assets/js/hidePopup.js"></script>
+    <?= require "utils/head.php" ?>
     <title>Inscription</title>
 </head>
 
 <body>
-    <?php if (isset($error)) {
-        echo "  <div class='error'>
+    <div class="account">
+        <?php if (isset($error)) {
+            echo "  <div class='error'>
                     $error
                     <div class='progress-bar' id='myBar'></div>
                 </div>";
-    } ?>
-    <img src="assets/img/messenger.png" alt="Messenger logo">
-    <h1>S'inscrire sur Messenger</h1>
-    <form method="POST">
-        <input type="email" placeholder="Adresse e-mail" name="email">
-        <input type="text" placeholder="Nom d'utilisateur" name="username">
-        <input type="password" placeholder="Mot de passe" name="password">
-        <input type="password" placeholder="Confirmer le mot de passe" name="confirmation">
-        <input type="submit" value="Continuer" name="register">
-    </form>
-    <a href="login.php">Déjà un compte ?</a>
+        } ?>
+        <img src="assets/img/messenger.png" alt="Messenger logo">
+        <h1>S'inscrire sur Messenger</h1>
+        <form method="POST">
+            <input type="email" placeholder="Adresse e-mail" name="email">
+            <input type="text" placeholder="Nom d'utilisateur" name="username">
+            <input type="password" placeholder="Mot de passe" name="password">
+            <input type="password" placeholder="Confirmer le mot de passe" name="confirmation">
+            <input type="submit" value="Continuer" name="register">
+        </form>
+        <a href="login.php">Déjà un compte ?</a>
+    </div>
 </body>
 
 </html>

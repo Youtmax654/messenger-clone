@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 body {
-  margin: 0;  
+  margin: 0;
   font-family: "Open Sans", sans-serif;
 }
 main {
@@ -46,6 +46,61 @@ main {
   margin-bottom: 10px;
   border-radius: 50%;
   cursor: pointer;
+}
+#ProfileMenu {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background: white;
+  position: fixed;
+  border-radius: 10px;
+  left: 10px;
+  bottom: 60px;
+  width: 350px;
+  height: auto;
+}
+#ProfileMenu .button {
+  border-radius: 5px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#ProfileMenu .button:hover {
+  transition: 0.1s;
+  background-color: white;
+  filter: brightness(0.95);
+}
+#ProfileMenu .arrow {
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.025);
+  position: absolute;
+  left: 15px;
+  bottom: -7px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 14px 14px 0 0px;
+  border-end-end-radius: 5px;
+  border-color: transparent white;
+  transform: rotate(45deg);
+}
+#ProfileMenu .button .fa-solid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: rgb(20, 20, 20);
+  background: rgb(244, 244, 245);
+  border-radius: 50%;
+  height: 25px;
+  margin: 0 10px;
+  padding: 2px;
+}
+#ProfileMenu .button a {
+  text-decoration: none;
+  color: black;
+  width: 100%;
 }
 
 #ChatMenu {
@@ -190,7 +245,7 @@ main {
   font-size: 16px;
 }
 #Chat .content .datetime {
-  color: rgb(101,102,106);
+  color: rgb(101, 102, 106);
   font-weight: 600;
   font-size: 12px;
 }
@@ -210,7 +265,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(240,241,241);
+  background: rgb(240, 241, 241);
   height: 30px;
   padding: 2px 15px 2px 15px;
   border-radius: 50px;
@@ -225,7 +280,7 @@ main {
   height: 30px;
   margin: 1px 10px 1px auto;
   color: white;
-  background: rgb(38,119,224);
+  background: rgb(38, 119, 224);
   border-radius: 50px;
   padding: 1px 15px 1px 15px;
 }
@@ -242,14 +297,14 @@ main {
   align-items: center;
   width: 35px;
   height: 35px;
-  color: rgb(55,82,232);
+  color: rgb(55, 82, 232);
   font-size: 18px;
   border-radius: 50px;
   margin: 8px;
   cursor: pointer;
 }
 #Chat .input .fa-regular:hover {
-  background-color: rgb(242,242,242)
+  background-color: rgb(242, 242, 242);
 }
 #Chat .input input {
   background-color: rgb(244, 244, 245);
@@ -272,7 +327,7 @@ main {
   cursor: pointer;
 }
 #Chat .input p:hover {
-  background-color: rgb(242,242,242)
+  background-color: rgb(242, 242, 242);
 }
 
 .error {
@@ -306,7 +361,7 @@ main {
   right: 0;
   bottom: 0;
   height: 5px;
-  background: #aca5fe;
+  background: #2f78ff;
   border-top-right-radius: 5px;
   border-end-end-radius: 5px;
 }

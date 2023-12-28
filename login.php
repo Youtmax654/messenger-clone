@@ -32,34 +32,31 @@ if (!empty($_POST["login"])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/account.css">
-    <script src="assets/js/hidePopup.js"></script>
+    <?= require "utils/head.php" ?>
     <title>Connexion</title>
 </head>
 
 <body>
-    <?php if (isset($success)) {
-        echo "  <div class='success'>
+    <div class="account">
+        <?php if (isset($success)) {
+            echo "  <div class='success'>
                     $success
                     <div class='progress-bar' id='myBar'></div>
                 </div>";
-    } ?>
-    <img src="assets/img/messenger.png" alt="Messenger logo">
-    <h1>Restez en contact, tout simplement.</h1>
-    <form method="POST">
-        <input type="email" placeholder="Adresse e-mail" name="email">
-        <input type="password" placeholder="Mot de passe" name="password">
-        <input type="submit" value="Continuer" name="login">
-    </form>
-    <a href="register.php">Pas de compte ?</a>
+        } ?>
+        <img src="assets/img/messenger.png" alt="Messenger logo">
+        <h1>Restez en contact, tout simplement.</h1>
+        <form method="POST">
+            <input type="email" placeholder="Adresse e-mail" name="email">
+            <input type="password" placeholder="Mot de passe" name="password">
+            <input type="submit" value="Continuer" name="login">
+        </form>
+        <a href="register.php">Pas de compte ?</a>
+    </div>
 </body>
 
 </html>

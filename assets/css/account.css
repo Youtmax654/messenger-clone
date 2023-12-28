@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
-body {
+.account {
   font-family: "Open Sans", sans-serif;
   margin: 0;
   display: flex;
@@ -10,25 +10,25 @@ body {
   height: 100vh;
 }
 
-img {
+.account img {
   width: 75px;
   height: 75px;
   margin-bottom: 10px;
 }
 
-h1 {
+.account h1 {
   font-weight: 500;
   margin: 40px;
 }
 
-form {
+ .account form {
   display: flex;
   flex-direction: column;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.account input[type="text"],
+.account input[type="email"],
+.account input[type="password"] {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   font-size: 17px;
@@ -38,7 +38,7 @@ input[type="password"] {
   padding: 0 16px;
 }
 
-input[type="submit"] {
+.account input[type="submit"] {
   margin: 15px;
   background: #0a7cff;
   border: none;
@@ -49,11 +49,11 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-a {
+.account a {
   color: black;
   text-decoration: none;
 }
 
-a:hover {
+.account a:hover {
   text-decoration: underline;
 }
