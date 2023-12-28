@@ -1,15 +1,38 @@
+<?php
+require "utils/database.php";
+
+if (!isset($_SESSION["userId"])) {
+    header('Location: login.php');
+}
+
+if (isset($_SESSION["successfulConnection"])) {
+    $success = $_SESSION["successfulConnection"];
+    unset($_SESSION["successfulConnection"]);
+}
+
+
+$pdo = connectToDbAndGetPDO();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="assets/js/hidePopup.js"></script>
     <title>Messenger Clone</title>
 </head>
 
 <body>
+    <?php if (isset($success)) {
+        echo "  <div class='success'>
+                    $success
+                    <div class='progress-bar' id='myBar'></div>
+                </div>";
+    } ?>
     <main>
         <div id="NavBar">
             <div class="nav">
@@ -34,7 +57,7 @@
                         <h1>Octet Coding</h1>
                         <p>Dernier message - 1 ans</p>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
         <!-- <div id="ContactMenu">
