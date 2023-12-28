@@ -65,11 +65,11 @@ main {
   align-items: center;
   margin: 10px;
   cursor: pointer;
-  transition: 0.2s;
+  background-color: white;
+  transition: filter 0.2s;
 }
 #ProfileMenu .button:hover {
-  transition: 0.1s;
-  background-color: white;
+  transition: filter 0.1s;
   filter: brightness(0.95);
 }
 #ProfileMenu .arrow {
