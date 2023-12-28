@@ -36,7 +36,7 @@ if (!empty($_POST["register"])) {
 <html lang="fr">
 
 <head>
-    <?= require "utils/head.php" ?>
+    <?php require "utils/head.php" ?>
     <title>Inscription</title>
 </head>
 

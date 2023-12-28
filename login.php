@@ -36,7 +36,7 @@ if (!empty($_POST["login"])) {
 <html lang="fr">
 
 <head>
-    <?= require "utils/head.php" ?>
+    <?php require "utils/head.php" ?>
     <title>Connexion</title>
 </head>
 
