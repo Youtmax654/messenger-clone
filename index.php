@@ -34,11 +34,11 @@ $pdo = connectToDbAndGetPDO();
                 <i class="fa-solid fa-comment selected"></i>
                 <i class="fa-solid fa-address-book"></i>
             </div>
-            <img src="assets/img/profilePicture.jpg" alt="Profile picture" id="Profile">
+            <img src="assets/img/profilePicture.jpg" alt="Profile picture" id="Profile" draggable="false">
             <div id="ProfileMenu" class="hidden">
                 <div class="button">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <a href="utils/disconnect.php">Déconnexion</a>
+                    <p>Déconnexion</p>
                 </div>
                 <div class="arrow"></div>
             </div>
