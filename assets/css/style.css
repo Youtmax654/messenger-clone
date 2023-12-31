@@ -13,7 +13,11 @@ main {
   border-radius: 8px;
 }
 .hidden {
-  visibility: hidden;
+  display: none !important;
+}
+img {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 #NavBar {
@@ -39,7 +43,6 @@ main {
   cursor: pointer;
 }
 #NavBar img {
-  user-select: none;
   display: flex;
   width: 35px;
   height: 35px;
@@ -58,11 +61,6 @@ main {
   height: auto;
 }
 #ProfileMenu .button {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
   border-radius: 5px;
   height: 40px;
   display: flex;
@@ -164,11 +162,11 @@ main {
   overflow-y: scroll;
 }
 #ChatMenu .chatList .chatSelection {
-  user-select: none;
   display: flex;
   align-items: center;
   width: 95%;
   height: 70px;
+  user-select: none;
   cursor: pointer;
 }
 #ChatMenu .chatList .chatSelection:hover {
@@ -177,7 +175,7 @@ main {
 }
 #ChatMenu .chatList .chatSelection .text h1 {
   font-size: 15px;
-  margin: 15px 0 -10px 0;
+  margin: 12px 0 -12px 0;
 }
 #ChatMenu .chatList .chatSelection .text p {
   color: rgb(101, 103, 107);
@@ -369,4 +367,114 @@ main {
   background: #2f78ff;
   border-top-right-radius: 5px;
   border-end-end-radius: 5px;
+}
+
+#NoConvOpen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#NoConvOpen img {
+  width: 100px;
+  height: 100px;
+}
+
+#NewMessage {
+  font-size: 17px;
+  position: relative;
+  flex: 1;
+}
+#NewMessage form {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2px rgb(229, 228, 228);
+}
+#NewMessage form p {
+  margin-left: 15px;
+}
+#NewMessage form input[type=text] {
+  position: absolute;
+  left: 45px;
+  right: 10px;
+  padding: 0;
+  font-size: 17px;
+  height: 20px;
+  outline: none;
+  border: none;
+}
+#NewMessage .searchResult {
+  user-select: none;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  left: 45px;
+  background: white;
+  width: 350px;
+  height: 450px;
+  box-shadow: rgba(149, 157, 165, 0.7) 0px 8px 24px;
+  border-radius: 10px;
+  padding-top: 10px;
+}
+#NewMessage .searchResult .user {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  border-radius: 10px;
+}
+#NewMessage .searchResult .user:hover {
+  background: rgba(242,242,242,255);
+}
+#NewMessage .searchResult .user img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  margin: 0 10px 0 10px;
+}
+#NewMessage .searchResult .user p {
+  font-size: 15px;
+  margin: 15px 0 15px 0;
+}
+
+
+#ChatMenu .chatList .newChat {
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  width: 95%;
+  height: 70px;
+  cursor: pointer;
+}
+#ChatMenu .chatList .newChat .text h1 {
+  font-size: 15px;
+}
+#ChatMenu .chatList .newChat img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin: 12px;
+}
+#ChatMenu .chatList .newChat .fa-xmark {
+  color: rgba(96,99,103,255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 10px;
+  border-radius: 50px;
+}
+#ChatMenu .chatList .newChat .fa-xmark::before {
+  font-size: 12px;
+}
+#ChatMenu .chatList .newChat .fa-xmark:hover {
+  background-color: rgba(233,232,233,255);
 }

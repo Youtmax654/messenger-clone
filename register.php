@@ -18,12 +18,13 @@ if (!empty($_POST["register"])) {
                     }
 
                     $pdo = connectToDbAndGetPDO();
-                    $register = $pdo->prepare("INSERT INTO users (`email`,`username`,`password`)
-                                       VALUES (:email, :username, :password)");
+                    $register = $pdo->prepare("INSERT INTO users (`email`,`username`,`password`, `profile_picture`)
+                                       VALUES (:email, :username, :password, :profilePicture)");
                     $register->execute([
                         ":email" => $email,
                         ":username" => $username,
-                        ":password" => $password
+                        ":password" => $password,
+                        ":profilePicture" => "assets/img/newUser.jpg"
                     ]);
                     header("Location: login.php");
                     $_SESSION["successfulRegistration"] = "Inscription réussie. Veuillez vous connecter.";

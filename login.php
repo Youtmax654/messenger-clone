@@ -9,26 +9,34 @@ if (isset($_SESSION["successfulRegistration"])) {
 if (!empty($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
+    $emailRegex = "/^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/";
 
-    $pdo = connectToDbAndGetPDO();
-    $login = $pdo->prepare("SELECT * FROM users
+    if (preg_match($emailRegex, $email)) {
+        $pdo = connectToDbAndGetPDO();
+        $login = $pdo->prepare("SELECT * FROM users
                             WHERE `email` = :email");
-    $login->execute([
-        ":email" => $email
-    ]);
-    $user = $login->fetch(PDO::FETCH_OBJ);
-    var_dump($user);
-    if ($user !== false) {
-        if (password_verify($_POST["password"], $user->password)) {
-            $_SESSION["userId"] = $user->id;
-            $_SESSION["username"] = $user->username;
-            $updateDate = $pdo->prepare('UPDATE users SET last_connection = DEFAULT WHERE id = :id');
-            $updateDate->execute([
-                ":id" => $_SESSION["userId"]
-            ]);
-            $_SESSION["successfulConnection"] = "Connexion réussie.";
-            header("Location: index.php");
+        $login->execute([
+            ":email" => $email
+        ]);
+        $user = $login->fetch(PDO::FETCH_OBJ);
+        if ($user !== false) {
+            if (password_verify($_POST["password"], $user->password)) {
+                $_SESSION["userId"] = $user->id;
+                $_SESSION["username"] = $user->username;
+                $updateDate = $pdo->prepare('UPDATE users SET last_connection = DEFAULT WHERE id = :id');
+                $updateDate->execute([
+                    ":id" => $_SESSION["userId"]
+                ]);
+                $_SESSION["successfulConnection"] = "Connexion réussie.";
+                header("Location: index.php");
+            } else {
+                $error = "L'adresse e-mail ou le mot de passe que vous avez entré n'est pas valide.";
+            }
+        } else {
+            $error = "L'adresse e-mail ou le mot de passe que vous avez entré n'est pas valide.";
         }
+    } else {
+        $error = "L'adresse email doit être au format nomprenom@domain.com.";
     }
 }
 ?>
@@ -47,7 +55,13 @@ if (!empty($_POST["login"])) {
                     $success
                     <div class='progress-bar' id='myBar'></div>
                 </div>";
-        } ?>
+        } else if (isset($error)) {
+            echo "  <div class='error'>
+                    $error
+                    <div class='progress-bar' id='myBar'></div>
+                </div>";
+        }
+        ?>
         <img src="assets/img/messenger.png" alt="Messenger logo">
         <h1>Restez en contact, tout simplement.</h1>
         <form method="POST">

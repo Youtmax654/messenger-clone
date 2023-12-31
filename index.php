@@ -34,7 +34,7 @@ $pdo = connectToDbAndGetPDO();
                 <i class="fa-solid fa-comment selected"></i>
                 <i class="fa-solid fa-address-book"></i>
             </div>
-            <img src="assets/img/profilePicture.jpg" alt="Profile picture" id="Profile" draggable="false">
+            <img src=<?php include "utils/getUserProfilePicture.php"?> alt='Profile picture' id='Profile'>
             <div id="ProfileMenu" class="hidden">
                 <div class="button">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -46,7 +46,7 @@ $pdo = connectToDbAndGetPDO();
         <div id="ChatMenu">
             <div class="title">
                 <h1>Discussions</h1>
-                <i class="fa-solid fa-pen-to-square"></i>
+                <i id="NewConversation" class="fa-solid fa-pen-to-square"></i>
             </div>
             <div class="searchChat">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -62,13 +62,27 @@ $pdo = connectToDbAndGetPDO();
                 </div>
             </div>
         </div>
-        <!-- <div id="ContactMenu">
-
+        <div id="NoConvOpen" class="">
+            <img src="assets/img/messenger.png" alt="Messenger logo">
         </div>
-        <div id="chat">
+        <div id="NewMessage" class="hidden">
+            <form method="POST">
+                <p>À :</p>
+                <input type="text" id="SendMessageTo">
+                <div class="searchResult hidden">
+                    <div class="user">
+                        <img src="assets/img/secondUserPP.jpg" alt="Profile Picture">
+                        <p>Nom d'utilisateur</p>
+                    </div>
+                    <div class="user">
+                        <img src="assets/img/profilePicture.jpg" alt="Profile Picture">
+                        <p>Nom d'utilisateur</p>
+                    </div>
 
-        </div> -->
-        <div id="Chat">
+                </div>
+            </form>
+        </div>
+        <div id="Chat" class="hidden">
             <div class="title">
                 <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
                 <p>Octet Coding</p>
