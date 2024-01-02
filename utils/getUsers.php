@@ -12,14 +12,6 @@ if (isset($_POST["searchValue"])) {
         ":searchValue" => $_POST["searchValue"] . '%'
     ]);
 
-    // Fetch the results as an associative array
-    $users = $getUsers->fetchAll(PDO::FETCH_ASSOC);
-
-    // Clean the data by converting to UTF-8
-    array_walk_recursive($users, function (&$value) {
-        $value = mb_convert_encoding($value, 'UTF-8', 'UTF-8');
-    });
-
-    // Convert the array to JSON
+    $users = $getUsers->fetchAll();
     echo json_encode($users);
 }

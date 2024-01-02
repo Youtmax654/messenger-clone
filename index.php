@@ -10,7 +10,6 @@ if (isset($_SESSION["successfulConnection"])) {
     unset($_SESSION["successfulConnection"]);
 }
 
-
 $pdo = connectToDbAndGetPDO();
 ?>
 <!DOCTYPE html>
@@ -53,13 +52,7 @@ $pdo = connectToDbAndGetPDO();
                 <input type="text" id="searchChat" placeholder="Rechercher dans Messenger">
             </div>
             <div class="chatList">
-                <div class="chatSelection selected">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <div class="text">
-                        <h1>Octet Coding</h1>
-                        <p>Dernier message - 1 ans</p>
-                    </div>
-                </div>
+                <div></div>
             </div>
         </div>
         <div id="NoConvOpen" class="">
@@ -70,104 +63,22 @@ $pdo = connectToDbAndGetPDO();
                 <p>À :</p>
                 <input type="text" id="SendMessageTo">
                 <div class="searchResult hidden">
-                    <div class="user">
-                        <img src="assets/img/secondUserPP.jpg" alt="Profile Picture">
-                        <p>Nom d'utilisateur</p>
-                    </div>
-                    <div class="user">
-                        <img src="assets/img/profilePicture.jpg" alt="Profile Picture">
-                        <p>Nom d'utilisateur</p>
-                    </div>
-
                 </div>
             </form>
         </div>
         <div id="Chat" class="hidden">
             <div class="title">
-                <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                <p>Octet Coding</p>
+                <img src="assets/img/secondUserPP.jpg" alt="Profile picture" class="profilePicture">
+                <p class="username">Octet Coding</p>
                 <i class="fa-solid fa-ellipsis"></i>
             </div>
             <div class="content">
-                <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                <h1>Octet Coding</h1>
+                <img src="assets/img/secondUserPP.jpg" alt="Profile picture" class="profilePicture">
+                <h1 class="username">Octet Coding</h1>
                 <p class="datetime">04/06/2022 00:00</p>
                 <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>!</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
+                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture" class="profilePicture">
+                    <p>Salut ! <img src="assets/img/messenger.png" alt="une image tkt"></p>
                 </div>
                 <div class="rightMessage">
                     <p>Salut !</p>
@@ -176,7 +87,8 @@ $pdo = connectToDbAndGetPDO();
             <div class="input">
                 <i class="fa-regular fa-image"></i>
                 <input type="text" placeholder="Aa">
-                <p>🐋</p>
+                <i class="fa-solid fa-thumbs-up"></i>
+                <i class="fa-solid fa-paper-plane-top hidden"></i>
             </div>
         </div>
     </main>

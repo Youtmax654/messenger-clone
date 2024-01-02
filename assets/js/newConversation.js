@@ -1,30 +1,41 @@
 document.addEventListener('DOMContentLoaded', function () {
     var NewConversationBtn = document.getElementById("NewConversation");
     var listOfChats = document.querySelector("#ChatMenu .chatList");
-    var selectedElements = document.querySelectorAll("#ChatMenu .chatList .selected");
     var Chat = document.getElementById("Chat");
+    var ChatProfilePictures = document.querySelectorAll("#Chat img.profilePicture");
+    var ChatUsernames = document.querySelectorAll("#Chat .username");
     var NewMessageTo = document.getElementById("NewMessage");
     var NoConvOpen = document.getElementById("NoConvOpen");
     var InputSendMessageTo = document.getElementById("SendMessageTo");
     var searchResult = document.querySelector("#NewMessage form .searchResult")
 
     NewConversationBtn.addEventListener("click", function () {
+        if (!Chat.classList.contains("hidden")) {
+            Chat.classList.add("hidden");
+        }
+        if (!NoConvOpen.classList.contains("hidden")) {
+            NoConvOpen.classList.add("hidden");
+        }
+        if (NewMessageTo.classList.contains("hidden")) {
+            NewMessageTo.classList.remove("hidden");
+        }
         if (!listOfChats.firstElementChild.classList.contains("newChat")) {
+            var selectedElements = document.querySelectorAll("#ChatMenu .chatList .selected");
             if (selectedElements.length > 0) {
                 selectedElements.forEach(function (selectedElement) {
                     selectedElement.classList.remove("selected")
                 });
             };
 
-            let div_newChat = document.createElement("div");
+            var div_newChat = document.createElement("div");
             div_newChat.classList.add("newChat", "selected");
-            let img = document.createElement("img");
+            var img = document.createElement("img");
             img.src = "assets/img/NewMessage.png";
-            let div_text = document.createElement("div");
+            var div_text = document.createElement("div");
             div_text.classList.add("text");
-            let h1 = document.createElement("h1");
+            var h1 = document.createElement("h1");
             h1.textContent = "Nouveau message";
-            let xmark = document.createElement("i")
+            var xmark = document.createElement("i")
             xmark.classList.add("fa-solid", "fa-xmark", "hidden")
             div_text.appendChild(h1);
             div_newChat.appendChild(img);
@@ -32,15 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
             div_newChat.appendChild(xmark);
             listOfChats.insertBefore(div_newChat, listOfChats.firstElementChild);
 
-            if (!Chat.classList.contains("hidden")) {
-                Chat.classList.add("hidden");
-            }
-            if (!NoConvOpen.classList.contains("hidden")) {
-                NoConvOpen.classList.add("hidden");
-            }
-            if (NewMessageTo.classList.contains("hidden")) {
-                NewMessageTo.classList.remove("hidden");
-            }
             div_newChat.addEventListener("mouseenter", function () {
                 xmark.classList.remove("hidden");
             })
@@ -52,9 +54,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 NewMessageTo.classList.add("hidden");
                 NoConvOpen.classList.remove("hidden");
                 InputSendMessageTo.value = "";
+                if (!Chat.classList.contains("hidden")) {
+                    Chat.classList.add("hidden");
+                }
+                if (!NewMessageTo.classList.contains("hidden")) {
+                    NewMessageTo.classList.add("hidden");
+                }
             })
         }
         InputSendMessageTo.focus();
+        searchResult.innerHTML = "";
     });
 
     function showSearchResult() {
@@ -80,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     InputSendMessageTo.addEventListener("keyup", function () {
         searchResult.innerHTML = "";
-        inputValue = InputSendMessageTo.value;
+        var inputValue = InputSendMessageTo.value;
         var xhr = new XMLHttpRequest();
         var url = "utils/getUsers.php";
         var params = "searchValue=" + inputValue;
@@ -98,40 +107,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                // Traitement des données reçues de PHP
-                var responseData = JSON.parse(xhr.responseText);
-                // Utilisez la méthode map pour extraire les noms d'utilisateurs
-                var IDs = responseData.map(function (user) {
-                    return user.id;
-                })
-                var usernames = responseData.map(function (user) {
-                    return user.username;
-                });
-                var profilesPicture = responseData.map(function (user) {
-                    return user.profile_picture;
-                });
+                var users = JSON.parse(xhr.responseText);
 
-                if (InputSendMessageTo.value === "") {
-                    searchResult.removeChild();
-                }
-                
-                IDs.forEach(id => {
-                    var index = IDs.indexOf(id);
-                    div_user = document.createElement("div");
+                users.forEach(user => {
+                    var div_user = document.createElement("div");
                     div_user.classList.add("user");
-                    img = document.createElement("img");
-                    img.src = profilesPicture;
-                    p = document.createElement("p")
-                    p.textContent = usernames[index];
+                    var img = document.createElement("img");
+                    img.src = user.profile_picture;
+                    var p = document.createElement("p")
+                    p.textContent = user.username;
                     div_user.appendChild(img);
                     div_user.appendChild(p);
                     searchResult.appendChild(div_user);
-                });
 
-                // Maintenant, la variable "usernames" contient un array de noms d'utilisateurs
-                console.log(IDs);
-                console.log(usernames);
-                console.log(profilesPicture);
+                    div_user.addEventListener("click", function () {
+                        NewMessageTo.classList.add("hidden");
+                        InputSendMessageTo.value = "";
+                        searchResult.innerHTML = "";
+                        Chat.classList.remove("hidden");
+                        ChatProfilePictures.forEach(ChatProfilePicture => {
+                            ChatProfilePicture.src = user.profile_picture;
+                        });
+                        ChatUsernames.forEach(ChatUsername => {
+                            ChatUsername.textContent = user.username;
+                            ChatUsername.setAttribute("userId", user.id)
+                        });
+                    });
+                });
             };
         };
     });
