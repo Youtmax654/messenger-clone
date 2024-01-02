@@ -14,3 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.replace("utils/disconnect.php");
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    let img = document.querySelector('img[alt="www.000webhost.com"]');
+    img.remove();
+})
