@@ -33,7 +33,7 @@ $pdo = connectToDbAndGetPDO();
                 <i class="fa-solid fa-comment selected"></i>
                 <i class="fa-solid fa-address-book"></i>
             </div>
-            <img src=<?php include "utils/getUserProfilePicture.php"?> alt='Profile picture' id='Profile'>
+            <img src=<?php include "utils/getUserProfilePicture.php" ?> alt='Profile picture' id='Profile'>
             <div id="ProfileMenu" class="hidden">
                 <div class="button">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -76,12 +76,7 @@ $pdo = connectToDbAndGetPDO();
                 <img src="assets/img/secondUserPP.jpg" alt="Profile picture" class="profilePicture">
                 <h1 class="username">Octet Coding</h1>
                 <p class="datetime">04/06/2022 00:00</p>
-                <div class="leftMessage">
-                    <img src="assets/img/secondUserPP.jpg" alt="Profile picture" class="profilePicture">
-                    <p>Salut ! <img src="assets/img/messenger.png" alt="une image tkt"></p>
-                </div>
-                <div class="rightMessage">
-                    <p>Salut !</p>
+                <div class="messages">
                 </div>
             </div>
             <div class="input">

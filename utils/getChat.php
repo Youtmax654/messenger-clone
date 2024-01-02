@@ -12,7 +12,7 @@ $getChatList = $pdo->prepare("WITH RankedMessages AS ( SELECT content, send_date
                               SELECT content, send_date, other_user_id, is_sender, u.username, u.profile_picture
                               FROM RankedMessages 
                               INNER JOIN users AS u ON other_user_id = u.id
-                              WHERE rnk = :userId
+                              WHERE rnk = 1
                               ORDER BY send_date DESC");
 $getChatList->execute([
     ":userId" => $_SESSION["userId"],

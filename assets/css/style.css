@@ -257,6 +257,12 @@ img {
   font-weight: 600;
   font-size: 12px;
 }
+#Chat .content .messages {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
 #Chat .content .leftMessage {
   display: flex;
   align-items: center;

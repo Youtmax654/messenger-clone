@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var NoConvOpen = document.getElementById("NoConvOpen");
-    var NewMessageTo = document.getElementById("NewMessage");
-    var Chat = document.getElementById("Chat");
-    var ChatProfilePictures = document.querySelectorAll("#Chat img.profilePicture");
-    var ChatUsernames = document.querySelectorAll("#Chat .username");
-    var ChatInput = document.querySelector("#Chat .input input");
-    var PokeBtn = document.querySelector("#Chat .input .fa-thumbs-up");
-    var SendBtn = document.querySelector("#Chat .input .fa-paper-plane-top")
-    var listOfChats = document.querySelector("#ChatMenu .chatList");
-
     setInterval(refreshListOfChats, 100);
+    setInterval(refreshChatMessages, 100);
     var currentMessages = [];
+
     function refreshListOfChats() {
+        var NoConvOpen = document.getElementById("NoConvOpen");
+        var NewMessageTo = document.getElementById("NewMessage");
+        var Chat = document.getElementById("Chat");
+        var ChatProfilePictures = document.querySelectorAll("#Chat img.profilePicture");
+        var ChatUsernames = document.querySelectorAll("#Chat .username");
+        var listOfChats = document.querySelector("#ChatMenu .chatList");
+
         var xhr = new XMLHttpRequest();
         var url = "utils/getChat.php";
         xhr.open("GET", url, true);
-        xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var newMessages = JSON.parse(xhr.responseText);
@@ -67,7 +65,60 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
             };
         };
+        xhr.send();
+    };
+
+    var currentChat = [];
+
+    function refreshChatMessages() {
+        var ChatUsername = document.querySelector("#Chat .username");
+        var chatWith = ChatUsername.getAttribute("userid");
+        var ChatContent = document.querySelector("#Chat .content");
+        var ChatMessages = document.querySelector("#Chat .content .messages");
+
+        var xhr = new XMLHttpRequest();
+        var url = "utils/chat.php";
+        var params = "chatWith=" + encodeURIComponent(chatWith);
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var newChat = JSON.parse(xhr.responseText);
+                if (JSON.stringify(newChat) !== JSON.stringify(currentChat)) {
+                    currentChat = newChat;
+
+                    ChatMessages.innerHTML = "";
+                    newChat.forEach(message => {
+                        if (message.sender_id === chatWith) {
+                            var div_leftMessage = document.createElement("div");
+                            div_leftMessage.classList.add("leftMessage");
+                            var img = document.createElement("img");
+                            img.src = message.profile_picture;
+                            img.classList.add("profilePicture");
+                            var p = document.createElement("p");
+                            p.textContent = message.content;
+                            div_leftMessage.appendChild(img);
+                            div_leftMessage.appendChild(p);
+                            ChatMessages.appendChild(div_leftMessage);
+                        } else {
+                            var div_rightMessage = document.createElement("div");
+                            div_rightMessage.classList.add("rightMessage");
+                            var p = document.createElement("p");
+                            p.textContent = message.content;
+                            div_rightMessage.appendChild(p);
+                            ChatMessages.appendChild(div_rightMessage);
+                        }
+                    })
+                    ChatContent.scrollTop = ChatContent.scrollHeight;
+                }
+            }
+        }
+        xhr.send(params);
     }
+
+    var ChatInput = document.querySelector("#Chat .input input");
+    var PokeBtn = document.querySelector("#Chat .input .fa-thumbs-up");
+    var SendBtn = document.querySelector("#Chat .input .fa-paper-plane-top")
 
     ChatInput.addEventListener("keyup", function (event) {
         PokeBtn.classList.add("hidden");
